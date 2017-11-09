@@ -19,7 +19,7 @@ function queryCall(){
 	//var call = queryURL + userchoice;
 	//console.log(queryURL)
 	//cycles between the 25 images that are delivered throught the call
-	if (i <= 25) {
+	if (i < 24) {
 		i++;
 	}else{
 		i = 0;
@@ -30,7 +30,7 @@ function queryCall(){
 			url:queryURL,
 			method: "GET"
 		}).done(function(response) {
-			//console.log(response)
+			console.log(response)
 		//creates the images
 			var imageUrl = response.data[i].images.original.url;
 	        var gifImages = $("<img>");
@@ -108,7 +108,7 @@ function gifEvent (){
 			$("#button-area").append(newBtn)
 			$("input").val("");
 		}else {
-			alert("Plese Click: \"Science\"");
+			alert("Plese Click: \"Cartoons\"");
 		}
 
 	});
