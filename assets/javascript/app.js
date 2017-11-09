@@ -5,7 +5,9 @@ var isStartChosen = false;
 var topics = ["The Simpsons", "Family Guy", "Southpark", "Rick and Morty", "Brickleberry"];
 var newTopic;
 var i = 0;
-stillArray = [];
+var animatedArray = [];
+var stillArray = [];
+var itemArray = [];
 //var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + userchoice + "api_key=o0TlHY8s49ooEHVkt5EJ9csM6Tf5BvHi";
 
 //Functions
@@ -15,7 +17,7 @@ function queryCall(){
 	var userchoice = this.value;
 	console.log("You chose: " + userchoice);
 	//var call = queryURL + userchoice;
-	console.log(queryURL)
+	//console.log(queryURL)
 	//cycles between the 25 images that are delivered throught the call
 	if (i <= 25) {
 		i++;
@@ -28,32 +30,51 @@ function queryCall(){
 			url:queryURL,
 			method: "GET"
 		}).done(function(response) {
-			console.log(response)
+			//console.log(response)
 		//creates the images
 			var imageUrl = response.data[i].images.original.url;
 	        var gifImages = $("<img>");
 	        gifImages.addClass("gif-button")
 	        gifImages.attr("src", imageUrl)
 	        gifImages.attr("id", userchoice);
+	        gifImages.attr("state", "animate")
+	        gifImages.attr("name", "item-" + i);
 	        $("#gif-area").prepend(gifImages);
-
-	        //creates the ratings tage under ther image
+	        itemArray.push("item-" + i);
+	        //console.log(itemArray);
+	    //creates the ratings tage under ther image
 	        var results = response.data[i];
             var gifRating = $("<p>");
             var rate = results.rating;
             var p = $("<p>").text("Rating: " + rate);
             $("#gif-area").append(p)
 //creates an array of user choices filled with the url of the still images
+			animatedArray.push(imageUrl);
 			var still = response.data[i].images.original_still.url;
 			stillArray.push(still);
-			console.log("the still array: " + still);
+			//console.log(stillArray);
+
 		});
 }
 //This will take care of pausing and starting images
 
 function gifEvent (){
-	var holder = this.src;
-	console.log("gif clicked " + holder);
+	var gifClicked = this.name;
+	var dataState = $(this).attr("state");
+	//console.log(dataState)
+	//Takes the index value of "name" and puts it to a holder
+	var holder = itemArray.indexOf(gifClicked);
+	//Takes the value in "holder" and takes the corresponding url from each Array
+	var animatedGif = animatedArray[holder];
+	var stillGif = stillArray[holder];
+	//console.log(stillGif);
+	  if (dataState === "animate") {
+		$(this).attr("state", "still");
+		$(this).attr("src", stillGif);
+	}else {
+		$(this).attr("state", "animate");
+		$(this).attr("src", animatedGif);
+	}
 }
 
 //Start button
