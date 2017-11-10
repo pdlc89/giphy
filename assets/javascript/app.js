@@ -31,6 +31,10 @@ function queryCall(){
 			method: "GET"
 		}).done(function(response) {
 			console.log(response)
+			//img div
+			var imgDiv = $("<div>")
+			imgDiv.attr("id", "item");
+			$(".gif-area").prepend(imgDiv);
 		//creates the images
 			var imageUrl = response.data[i].images.original.url;
 	        var gifImages = $("<img>");
@@ -39,7 +43,7 @@ function queryCall(){
 	        gifImages.attr("id", userchoice);
 	        gifImages.attr("state", "animate")
 	        gifImages.attr("name", "item-" + i);
-	        $("#gif-area").prepend(gifImages);
+	        $("#item").prepend(gifImages);
 	        itemArray.push("item-" + i);
 	        //console.log(itemArray);
 	    //creates the ratings tage under ther image
@@ -47,7 +51,7 @@ function queryCall(){
             var gifRating = $("<p>");
             var rate = results.rating;
             var p = $("<p>").text("Rating: " + rate);
-            $("#gif-area").append(p)
+            $("#item").append(p)
 //creates an array of user choices filled with the url of the still images
 			animatedArray.push(imageUrl);
 			var still = response.data[i].images.original_still.url;
