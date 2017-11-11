@@ -5,17 +5,24 @@ html {
 }
 
 body {
-	max-width: 100%;
+	/*max-width: 100%;*/
 	background-color: #afeeee;
 }
 /* This will style the title*/
 header {
-	background-color: black;
+	background-color: #333;
 	max-width: 100%;
 	height: 200px;
 	margin-top: 1%;
 	text-align: center;
 	border-radius: 15px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: #111;
+}
+
+h1 {
+	color: #777;
 }
 
 .title {
@@ -26,7 +33,7 @@ header {
 	width: 50%;
 	padding: 1%;
 	margin-left: 25%;
-	background-color: #333;
+	background-color: #111;
 	border-radius: 10px;
 	border-style: solid;
 	border-width: 5px;
@@ -51,12 +58,25 @@ header {
 	height: auto;
 }
 .topic-button {
-	background-color: blue;
+	height: 50px;
+	width: auto;
+	color: #777;
+	background-color: #111;
 	border-radius: 5px;
+	border-color: #777;
 	margin-left: 3px;
 	font-weight: bold;
-
 }
+
+#add {
+	color: #777;
+	background-color: #111; 
+	border-radius: 3px;
+	border-width: 4px;
+	border-style: solid;
+	border-color: #111;
+}
+
 .gif-button{
 	margin-top: 10px;
 	width: 80%;
@@ -69,11 +89,17 @@ header {
 	height: auto;
 	float: left;
 	border-radius: 3px;
-	border-width: 2px;
+	border-width: 4px;
 	border-style: solid;
-	border-color: red;
+	border-color: #111;
 	margin-left: 5%;
 	margin-top: 2%;
+}
+img {
+	border-radius: 3px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #333;
 }
 p {
 	margin-left: 30%;
@@ -85,10 +111,24 @@ p {
 	border-color: black;
 	border-width: 5px;
 	border-radius: 10px;
+	min-height: 100%;
 }
 /* this styles the aside column next to the gifs*/
 .aside {
 	width: 40%;
 	float: right;
 	align-items: center;
+}
+
+footer {
+  margin: 27% 0;
+  clear: both;
+  font-size: 12px;
+  color: #fff;
+  color: #ccc;
+  text-align: center;
+  background: #111;
+  border-top: 8px solid #777;
+  flex: 0;
+  padding: 20px;
 }
