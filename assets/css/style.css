@@ -1,19 +1,14 @@
-html {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-}
 
 body {
-	/*max-width: 100%;*/
 	background-color: #afeeee;
 }
 /* This will style the title*/
 header {
 	background-color: #333;
 	max-width: 100%;
-	height: 200px;
+	height: auto;
 	margin-top: 1%;
+	margin-bottom: 1%;
 	text-align: center;
 	border-radius: 15px;
 	border-width: 8px;
@@ -26,19 +21,43 @@ h1 {
 }
 
 .title {
-	padding-top: 35px;
+	padding-top: 4%;
+	padding-bottom: 4%;
 }
 
 #title {
+	display: block;
+	margin: auto;
 	width: 50%;
-	padding: 1%;
-	margin-left: 25%;
+	padding-top: 1%;
+	padding-bottom: 1%;
 	background-color: #111;
 	border-radius: 10px;
 	border-style: solid;
 	border-width: 5px;
 	border-color: #777;
 }
+#title:hover {
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+  }
+  
+  @keyframes shake {
+	10%, 90% {
+	  transform: translate3d(-1px, 0, 0);
+	}
+	20%, 80% {
+	  transform: translate3d(2px, 0, 0);
+	}
+	30%, 50%, 70% {
+	  transform: translate3d(-4px, 0, 0);
+	}
+	40%, 60% {
+	  transform: translate3d(4px, 0, 0);
+	}
+  }
 /* assings the pointer to all buttons*/
 #title, .topic-button, .gif-button, #add{
 	cursor: pointer;
@@ -49,23 +68,31 @@ h1 {
   margin: 0 auto;
   clear: both;
   flex: 1 0 auto;
-  padding: 20px;
+  padding: 1%;
 }
-
+#input-field {
+	float: right;
+	margin-right: 10%;
+	max-width: 40%;
+}
 #button-area {
 	float: left;
 	width: 60%;
+	max-height: 10%;
 	height: auto;
 }
 .topic-button {
-	height: 50px;
+	font-size: 1.0em;
+	padding: 1%;
+	height: 100%;
 	width: auto;
 	color: #777;
 	background-color: #111;
 	border-radius: 5px;
 	border-color: #777;
-	margin-left: 3px;
+	margin-left: 2%;
 	font-weight: bold;
+	margin-top: 2%;
 }
 
 #add {
@@ -104,15 +131,6 @@ img {
 p {
 	margin-left: 30%;
 }
-#gif-area {
-	width: 100%;
-	margin-top: 5%;
-	border-style: solid;
-	border-color: black;
-	border-width: 5px;
-	border-radius: 10px;
-	min-height: 100%;
-}
 /* this styles the aside column next to the gifs*/
 .aside {
 	width: 40%;
@@ -120,15 +138,37 @@ p {
 	align-items: center;
 }
 
-footer {
-  margin: 27% 0;
-  clear: both;
-  font-size: 12px;
-  color: #fff;
-  color: #ccc;
-  text-align: center;
-  background: #111;
-  border-top: 8px solid #777;
-  flex: 0;
-  padding: 20px;
+@media screen and (max-width: 850px) {
+	.main {
+		display: block;
+		margin: auto;
+	}
+	#input-field {
+		float: none;
+		display: block;
+		margin: auto;
+	}
+	input {
+		max-width: 100%;
+	}
+	#add {
+		display: block;
+		margin: auto;
+		margin-top: 5%;
+	}
+	#button-area {
+		width: 100%;
+		float: none;
+		display: block;
+		margin: auto;
+		/* margin-top: 5%; */
+	}
+#item {
+	width: 100%;
+	display: block;
+	margin: auto;
+	float: none;
+	border-style: none;
 }
+}
+
